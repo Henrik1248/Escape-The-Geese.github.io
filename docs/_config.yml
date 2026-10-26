@@ -1,15 +1,9 @@
-Escape-The-Geese.github.io/
-├── core/              ← game code (unchanged)
-├── lwjgl3/            ← game code (unchanged)
-├── README.md          ← stays as the repo README
-└── docs/              ← new: the website
-    ├── _config.yml
-    ├── index.md
-    ├── deliverables.md
-    ├── requirements.md
-    ├── architecture.md
-    ├── planning.md
-    ├── risks.md
-    └── assets/
-        ├── pdfs/
-        └── images/
+title: Escape the Geese
+description: "Engineering 1 coursework: creating a game with libGDX"
+theme: minima
+header_pages:
+  - deliverables.md
+  - requirements.md
+  - architecture.md
+  - planning.md
+  - risks.md
