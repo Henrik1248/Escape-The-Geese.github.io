@@ -4,9 +4,10 @@ title: Requirements
 ---
 
 ## Customer meetings
-| Meeting | Date | Focus | Notes |
 
-| Meeting 1 | 09/10/2026 | Clarifying the product brief: platform, gameplay rules, accessibility | [PDF]({{ "/assets/pdfs/customer-meeting-1-09-10-2026.pdf" | relative_url }}) |
+| Meeting | Date | Focus | Notes |
+|---|---|---|---|
+| Meeting 1 | 09/10/2026 | Clarifying the product brief: platform, gameplay rules, accessibility | [PDF]({{ "/assets/customer-meeting-1-09-10-2026.pdf" | relative_url }}) |
 
 ### Meeting 1: Key outcomes
 
@@ -17,7 +18,8 @@ title: Requirements
 - **Performance:** loads within a couple of seconds on an average computer (QR_STARTUP)
 - **Out of scope:** saving progress, leaderboards and storing player data
 
-[Read the full meeting notes (PDF)]({{ "/assets/pdfs/customer-meeting-1-09-10-2026.pdf" | relative_url }})
+[Read the full meeting notes (PDF)]({{ "/assets/customer-meeting-1-09-10-2026.pdf" | relative_url }})
 
 ## Current requirements
+
 Constraint, user, functional and quality requirements tables...
