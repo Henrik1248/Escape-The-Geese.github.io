@@ -5,8 +5,8 @@ title: Requirements
 
 ## Customer meetings
 | Meeting | Date | Focus | Notes |
-|---|---|---|---|
-| Meeting 1 | 09/10/2026 | Clarifying the product brief: platform, gameplay rules, accessibility | [PDF]({{ "/assets/pdfs/customer-meeting-1-2026-10-09.pdf" | relative_url }}) |
+
+| Meeting 1 | 09/10/2026 | Clarifying the product brief: platform, gameplay rules, accessibility | [PDF]({{ "/assets/pdfs/customer-meeting-1-09-10-2026.pdf" | relative_url }}) |
 
 ### Meeting 1: Key outcomes
 
