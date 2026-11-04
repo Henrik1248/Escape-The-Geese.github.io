@@ -20,7 +20,8 @@ public class Player {
 
     public Player(){
         delta = Gdx.graphics.getDeltaTime();
-        speed = 4f; // Value to be adjusted in prototyping
+        speed = 4f;
+        health = 100; // Values to be adjusted in prototyping
         location = new float[]{startX,startY};
     }
     // Update players location in below methods
