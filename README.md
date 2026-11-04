@@ -31,3 +31,18 @@ Useful Gradle tasks and flags:
 
 Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
 For example, `core:clean` removes `build` folder only from the `core` project.
+
+## Project board
+
+# Tasks
+- fill in methods and attributes of classes: Event, Item and Score (use UML diagrams as a guideline)
+- design the player, goose and map images so we can display them in the first screen
+- work on the geese' pathfinding
+- work on the spawning of waves of geese
+- design the different events
+- design the different items
+- fill in the main game loop with the functionality, adding class methods, attributes and functions where appropriate
+- update this list if new tasks pop up
+- if you want to take up a task put your name next to it (preferred) or message on the groupchat
+
+# Issues
