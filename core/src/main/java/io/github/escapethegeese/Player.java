@@ -16,6 +16,7 @@ public class Player {
     private float startX;
     private float startY;
     private List<Item> inventory;
+    private int score;
 
     public Player(){
         delta = Gdx.graphics.getDeltaTime();
@@ -58,5 +59,11 @@ public class Player {
     }
     public void useItem(int inventorySlot){
         // ToDo
+    }
+    public int getScore(){
+        return score;
+    }
+    public void increaseScore(int amount){
+        score += amount;
     }
 }
