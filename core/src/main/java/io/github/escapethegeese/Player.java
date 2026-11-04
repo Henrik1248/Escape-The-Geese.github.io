@@ -12,6 +12,7 @@ public class Player {
 
     public Player(){
         delta = Gdx.graphics.getDeltaTime();
+        speed = 4f; // Value to be adjusted in prototyping
     }
 
     public void moveUp(){
