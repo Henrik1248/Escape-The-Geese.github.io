@@ -3,18 +3,20 @@ package io.github.escapethegeese;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class GooseGame {
     // Constructor, attributes and methods to be filled in
-    Player player;
-    int timeElapsed;
-    List<Goose> geese;
-    boolean isPaused;
-    int eventsTriggered;
-    int waveNumber;
-    List<Item> mapItems;
-    List<Event> mapEvents;
+    private Player player;
+    private int timeElapsed;
+    private List<Goose> geese;
+    private boolean isPaused;
+    private int itemsUsed;
+    private int eventsTriggered;
 
-    public Game(){
+    private int waveNumber;
+    private List<Item> mapItems;
+    private List<Event> mapEvents;
+
+    public GooseGame(){
         player = new Player();
         geese = new ArrayList<>();
         isPaused = false;
@@ -32,7 +34,9 @@ public class Game {
         // ToDo
         return new ArrayList<>();
     }
-
+    public Player getPlayer(){
+        return player;
+    }
     public void pauseGame(){
         isPaused = true;
     }
@@ -57,5 +61,14 @@ public class Game {
     }
     public boolean checkForWin(){
         return false;
+    }
+    public int getItemsUsed(){
+        return itemsUsed;
+    }
+    public int getEventsTriggered(){
+        return eventsTriggered;
+    }
+    public int getTimeElapsed(){
+        return timeElapsed;
     }
 }
