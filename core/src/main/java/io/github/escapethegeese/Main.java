@@ -13,6 +13,8 @@ public class Main extends Game {
     private SpriteBatch drawingBatch;
     private BitmapFont font;
     private GooseGame game;
+    private float timer = 0f;
+    private float delta;
 
     @Override
     public void create() {
@@ -25,6 +27,7 @@ public class Main extends Game {
     @Override
     public void render(){
         gameLoop();
+        delta = Gdx.graphics.getDeltaTime();
     }
 
     private void gameLoop(){
@@ -40,6 +43,13 @@ public class Main extends Game {
         font.draw(drawingBatch, "Events triggered: " + String.valueOf(game.getEventsTriggered()), 0, 450);
         font.draw(drawingBatch, "Items used: " + String.valueOf(game.getItemsUsed()), 0, 425);
         font.draw(drawingBatch, "Timer: " + String.valueOf(game.getTimeElapsed()), 0, 400); // Adjust y values once game UI is finalized
+
+        timer += delta;
+        if (timer >= 1.0f){
+            game.incrementTimeElapsed();
+            timer = 0f;
+        }
+
         drawingBatch.end();
     }
 

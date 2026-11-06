@@ -71,4 +71,7 @@ public class GooseGame {
     public int getTimeElapsed(){
         return timeElapsed;
     }
+    public void incrementTimeElapsed(){
+        timeElapsed++;
+    }
 }
