@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.graphics.Color;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
@@ -28,6 +29,7 @@ public class Main extends Game {
     public void render(){
         gameLoop();
         delta = Gdx.graphics.getDeltaTime();
+        font.setColor(Color.BLACK);
     }
 
     private void gameLoop(){
