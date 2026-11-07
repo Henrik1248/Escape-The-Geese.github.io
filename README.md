@@ -45,17 +45,116 @@ For example, `core:clean` removes `build` folder only from the `core` project.
 - update this list if new tasks pop up
 - if you want to take up a task put your name next to it (preferred) or message on the groupchat
 
-# Dependancy map
-#5 Sprites ──┬──► #19 Map boundaries ──► #9 Pathfinding ──► #10 Wave spawning
-             └──► #11 Game loop ──┬──► #14 Timer ──► #15 Pause
-                                  ├──► #18 Win/loss/tutorial screens
-                                  ├──► #20 Exhaustion meter
-                                  ├──► #12 Events & items ──► #17 Counter
-                                  └──► #13 Scoring (optional)
-#6 Events ─┐
-#7 Items ──┴──► #8 Classes ──┬──► #12
-                             ├──► #17
-                             └──► #13
+## Milestones
 
-#12, #14, #15, #18, #20 ──► #21 Unit tests ──► #22 Final JAR
-#23 Report & website (runs alongside everything)
+| Milestone | Due | Goal |
+|---|---|---|
+| **M1 – Foundations** | Mon 9 Nov | Sprites on screen; events and items designed; Event, Item and Score classes written |
+| **M2 – Core Gameplay** | Thu 12 Nov | Map collisions, geese pathfinding and waves, main game loop, timer and pause |
+| **M3 – Content & Integration** | Sat 14 Nov | Events and items in play, HUD counters, screens, exhaustion meter, tests, final JAR, report |
+| *Buffer* | Sun 15 Nov | Bug fixing and submission prep |
+
+## Priority labels
+
+| Label | Meaning |
+|---|---|
+| `P0-critical` | On the critical path: other issues can't start until it's done. Start immediately |
+| `P1-high` | Needed for the milestone, and blocks at least one later issue or the submission |
+| `P2-medium` | Needed, but nothing else depends on it |
+| `P3-low` | Optional or housekeeping |
+
+---
+
+## Dependency map
+
+An arrow from A to B means **A blocks B**: B can't be finished until A is done.
+
+```mermaid
+flowchart LR
+    I5["#5 Sprites"]:::p0
+    I6["#6 Events design"]:::p0
+    I7["#7 Items design"]:::p0
+    I8["#8 Event/Item/Score classes"]:::p1
+    I9["#9 Goose pathfinding"]:::p1
+    I10["#10 Wave spawning"]:::p2
+    I11["#11 Main game loop"]:::p0
+    I12["#12 Events & items in play"]:::p2
+    I13["#13 Scoring (optional)"]:::p3
+    I14["#14 Game timer"]:::p0
+    I15["#15 Pause"]:::p1
+    I17["#17 Items/events counter"]:::p2
+    I18["#18 Win/loss/tutorial screens"]:::p1
+    I19["#19 Map boundaries"]:::p1
+    I20["#20 Exhaustion meter"]:::p1
+    I21["#21 Unit tests"]:::p2
+    I22["#22 Final JAR & licences"]:::p1
+
+    I5 --> I19 --> I9 --> I10
+    I5 --> I11
+    I6 --> I8
+    I7 --> I8
+    I6 --> I12
+    I7 --> I12
+    I8 --> I12
+    I8 --> I13
+    I8 --> I17
+    I11 --> I12
+    I11 --> I13
+    I11 --> I14 --> I15
+    I11 --> I18
+    I11 --> I20
+    I12 --> I17
+    I12 --> I21
+    I14 --> I21
+    I15 --> I21
+    I18 --> I21
+    I20 --> I21
+    I21 --> I22
+
+    classDef p0 fill:#DC2626,color:#fff,stroke:#7f1d1d
+    classDef p1 fill:#F97316,color:#fff,stroke:#7c2d12
+    classDef p2 fill:#FACC15,color:#000,stroke:#713f12
+    classDef p3 fill:#22C55E,color:#000,stroke:#14532d
+```
+
+**Colour key:** red = P0, orange = P1, yellow = P2, green = P3.
+
+Not shown because they have no dependencies: **#16 Backlog** and **#23 Report sections and website**, which runs alongside everything else.
+
+### Critical path
+
+```
+#5 Sprites → #11 Main game loop → #14 Timer / #12 Events & items → #21 Unit tests → #22 Final JAR
+```
+
+If anything on this path slips, the submission slips. Pick these up first and ask for help early if one gets stuck.
+
+---
+## Suggested work order
+
+1. **Start now, in parallel:** #5 sprites, #6 events design, #7 items design. Nothing blocks them.
+2. **Once the sprites exist:** #11 main game loop and #19 map boundaries.
+3. **Once the designs are agreed:** #8 Event, Item and Score classes.
+4. **Once the game loop runs:** #14 timer, then #15 pause; #18 screens; #20 exhaustion meter.
+5. **Once the map has boundaries:** #9 pathfinding, then #10 waves.
+6. **Once the classes and game loop are done:** #12 events and items in play, then #17 counter.
+7. **Last:** #21 unit tests, then #22 final JAR. Finish #23 after code freeze so the report matches the code.
+
+### Workflow
+
+Code is reviewed **before** it goes into `main`, never after.
+
+1. **Start:** check the issue's *Blocked by* list is done, assign yourself, then create the branch from the issue.
+2. **Commit** your work on your branch, with clear messages, for example `Add countdown to GameState (#14)`.
+3. **Push** the branch to GitHub: `git push`.
+4. **Open a pull request** from your branch into `main`, with `Closes #<issue number>` in the description.
+5. **Request a reviewer** using the *Reviewers* box in the PR sidebar.
+6. **Review:** the reviewer reads the *Files changed* tab and, ideally, pulls the branch and runs the game. They then **Approve** or **Request changes**.
+7. **Fix if needed:** make the changes on the same branch and push again. The PR updates automatically, so don't open a new one.
+8. **Merge** into `main` once it's approved, then delete the branch. The issue closes and moves to *Done* automatically.
+
+**Keeping it quick:** keep PRs small and review within a day. Waiting PRs hold up the issues that depend on them.
+
+**Stay up to date:** if `main` changes while you're working, run `git pull origin main` on your branch to bring the changes in.
+
+**New task?** Create an issue first, then a branch using the same naming format.
