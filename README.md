@@ -140,21 +140,42 @@ If anything on this path slips, the submission slips. Pick these up first and as
 6. **Once the classes and game loop are done:** #12 events and items in play, then #17 counter.
 7. **Last:** #21 unit tests, then #22 final JAR. Finish #23 after code freeze so the report matches the code.
 
+## Branches
+
+`main` always holds working code. Nobody pushes to it directly; all changes go through a pull request.
+
+Each issue gets its own branch, named `<issue number>-<short name>`. **Create the branch when you start the issue, not before**, using **Create a branch** under *Development* in the issue's sidebar. This links the branch to the issue on the project board.
+
+| Branch | Issue |
+|---|---|
+| `5-sprites` | #5 Design player, goose and map sprites |
+| `6-events-design` | #6 Design the different events |
+| `7-items-design` | #7 Design the different items |
+| `8-event-item-score-classes` | #8 Implement Event, Item and Score classes from UML |
+| `9-goose-pathfinding` | #9 Goose pathfinding |
+| `10-wave-spawning` | #10 Wave spawning of geese |
+| `11-main-game-loop` | #11 Main game loop |
+| `12-events-items-integration` | #12 Integrate events and items into gameplay |
+| `13-scoring` | #13 Connect scoring (optional for A1) |
+| `14-game-timer` | #14 Game timer (5 minutes) |
+| `15-pause` | #15 Pause and start paused |
+| `17-counter` | #17 Items-used and events-found counter |
+| `18-screens` | #18 Win, loss and tutorial screens |
+| `19-map-boundaries` | #19 Map boundaries and collisions |
+| `20-exhaustion-meter` | #20 Exhaustion meter |
+| `21-unit-tests` | #21 Unit tests |
+| `22-final-jar` | #22 Final JAR and asset licence log |
+| `23-report-website` | #23 Report sections and website |
+
+#16 (Backlog) has no branch, as it doesn't change any files.
+
 ### Workflow
 
-Code is reviewed **before** it goes into `main`, never after.
-
-1. **Start:** check the issue's *Blocked by* list is done, assign yourself, then create the branch from the issue.
-2. **Commit** your work on your branch, with clear messages, for example `Add countdown to GameState (#14)`.
-3. **Push** the branch to GitHub: `git push`.
-4. **Open a pull request** from your branch into `main`, with `Closes #<issue number>` in the description.
-5. **Request a reviewer** using the *Reviewers* box in the PR sidebar.
-6. **Review:** the reviewer reads the *Files changed* tab and, ideally, pulls the branch and runs the game. They then **Approve** or **Request changes**.
-7. **Fix if needed:** make the changes on the same branch and push again. The PR updates automatically, so don't open a new one.
-8. **Merge** into `main` once it's approved, then delete the branch. The issue closes and moves to *Done* automatically.
-
-**Keeping it quick:** keep PRs small and review within a day. Waiting PRs hold up the issues that depend on them.
-
-**Stay up to date:** if `main` changes while you're working, run `git pull origin main` on your branch to bring the changes in.
+1. **Start:** check the issue's *Blocked by* list is done, assign yourself, then create the branch.
+2. **Work:** commit often with clear messages, for example `Add countdown to GameState (#14)`.
+3. **Stay up to date:** if `main` changes, run `git pull origin main` on your branch to bring the changes in.
+4. **Finish:** open a pull request into `main` with `Closes #<issue number>` in the description.
+5. **Review:** at least one teammate checks it runs before it's merged.
+6. **Clean up:** delete the branch after merging. The issue closes and moves to *Done* automatically.
 
 **New task?** Create an issue first, then a branch using the same naming format.
