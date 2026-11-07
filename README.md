@@ -45,4 +45,17 @@ For example, `core:clean` removes `build` folder only from the `core` project.
 - update this list if new tasks pop up
 - if you want to take up a task put your name next to it (preferred) or message on the groupchat
 
-# Issues
+# Dependancy map
+#5 Sprites ──┬──► #19 Map boundaries ──► #9 Pathfinding ──► #10 Wave spawning
+             └──► #11 Game loop ──┬──► #14 Timer ──► #15 Pause
+                                  ├──► #18 Win/loss/tutorial screens
+                                  ├──► #20 Exhaustion meter
+                                  ├──► #12 Events & items ──► #17 Counter
+                                  └──► #13 Scoring (optional)
+#6 Events ─┐
+#7 Items ──┴──► #8 Classes ──┬──► #12
+                             ├──► #17
+                             └──► #13
+
+#12, #14, #15, #18, #20 ──► #21 Unit tests ──► #22 Final JAR
+#23 Report & website (runs alongside everything)
