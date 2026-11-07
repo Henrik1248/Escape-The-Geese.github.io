@@ -26,6 +26,7 @@ public class Main extends Game {
         drawingBatch = new SpriteBatch();
         font = new BitmapFont();
         game = new GooseGame();
+
         background = new  Texture("map.png");
     }
 
@@ -60,6 +61,12 @@ public class Main extends Game {
         // Draw the player
 
         drawingBatch.draw(player.getSprite().getTexture(), player.getSprite().getX(), player.getSprite().getY(), player.getSprite().getWidth(), player.getSprite().getHeight());
+
+        // Draw the geese
+
+        for (Goose goose : game.getGeese()){
+            drawingBatch.draw(goose.getSprite().getTexture(), goose.getSprite().getX(), goose.getSprite().getY(), goose.getSprite().getWidth(), goose.getSprite().getHeight());
+        }
 
         // Display inventory
 

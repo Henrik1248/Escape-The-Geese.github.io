@@ -18,7 +18,12 @@ public class GooseGame {
 
     public GooseGame(){
         player = new Player();
-        geese = new ArrayList<>();
+
+        // Testing start geese
+        geese = new ArrayList<Goose>();
+        geese.add(new Goose(200, 250));
+        geese.add(new Goose(300, 250));
+        geese.add(new Goose(100, 250));
         isPaused = false;
         eventsTriggered = 0;
         waveNumber = 1;
@@ -36,6 +41,9 @@ public class GooseGame {
     }
     public Player getPlayer(){
         return player;
+    }
+    public List<Goose> getGeese(){
+        return geese;
     }
     public void pauseGame(){
         isPaused = true;

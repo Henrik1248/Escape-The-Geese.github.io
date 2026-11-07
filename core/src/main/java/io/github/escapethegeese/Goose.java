@@ -1,21 +1,23 @@
 package io.github.escapethegeese;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+
 public class Goose {
     // Constructor, attributes and methods to be filled in
     private int health; // Are we having health or is this just something to represent how close they are to being dispersed
     private float speed;
-    private float[] location;
+    private Sprite sprite;
 
-    public Goose(){
+    public Goose(int x, int y){
         health = 10;
-        speed = 3f; // Values to be adjusted in prototyping
+        speed = 100f; // Values to be adjusted in prototyping
+        sprite = new Sprite(new Texture("Sprites/goose.png"));
+        sprite.setPosition(x, y);
     }
 
     public int getHealth(){
         return health;
-    }
-    public float[] getLocation(){
-        return location;
     }
     public void moveGoose(Player player){
         pathFindToPlayer(player.getLocation());
@@ -35,4 +37,5 @@ public class Goose {
     public void decrementHealth(int amount){
         health -= amount;
     }
+    public Sprite getSprite(){return sprite;}
 }
