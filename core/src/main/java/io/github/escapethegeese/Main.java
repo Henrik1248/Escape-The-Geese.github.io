@@ -18,6 +18,7 @@ public class Main extends Game {
     private Player player;
     private float timer = 0f;
     private float delta;
+    private Texture background;
 
     @Override
     public void create() {
@@ -25,6 +26,7 @@ public class Main extends Game {
         drawingBatch = new SpriteBatch();
         font = new BitmapFont();
         game = new GooseGame();
+        background = new  Texture("map.png");
     }
 
     @Override
@@ -43,9 +45,14 @@ public class Main extends Game {
 
         checkPlayerMovementInputs(player);
 
+        drawingBatch.begin();
+
+        //Draw the map, should be first thing drawn
+
+        drawingBatch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
         // Draw the statistics
 
-        drawingBatch.begin();
         font.draw(drawingBatch, "Events triggered: " + String.valueOf(game.getEventsTriggered()), 0, 450);
         font.draw(drawingBatch, "Items used: " + String.valueOf(game.getItemsUsed()), 0, 425);
         font.draw(drawingBatch, "Timer: " + String.valueOf(game.getTimeElapsed()), 0, 400); // Adjust y values once game UI is finalized
@@ -74,7 +81,6 @@ public class Main extends Game {
 
     private void checkPlayerMovementInputs(Player player){
         if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
-            System.out.println("Moving");
             player.moveUp(delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)){
