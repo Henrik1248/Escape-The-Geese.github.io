@@ -3,6 +3,7 @@ package io.github.escapethegeese;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -23,6 +24,7 @@ public class Player {
         speed = 4f;
         health = 100; // Values to be adjusted in prototyping
         location = new float[]{startX,startY};
+        inventory = new ArrayList<>();
     }
     // Update players location in below methods
     public void moveUp(){
@@ -56,7 +58,8 @@ public class Player {
         return inventory.size() == 5;
     }
     public void pickUpItem(Item item){
-        // ToDo
+        // Check if inventory is full here or before trying calling pickUpItem
+        inventory.add(item);
     }
     public void useItem(int inventorySlot){
         // ToDo
