@@ -171,11 +171,20 @@ Each issue gets its own branch, named `<issue number>-<short name>`. **Create th
 
 ### Workflow
 
-1. **Start:** check the issue's *Blocked by* list is done, assign yourself, then create the branch.
-2. **Work:** commit often with clear messages, for example `Add countdown to GameState (#14)`.
-3. **Stay up to date:** if `main` changes, run `git pull origin main` on your branch to bring the changes in.
-4. **Finish:** open a pull request into `main` with `Closes #<issue number>` in the description.
-5. **Review:** at least one teammate checks it runs before it's merged.
-6. **Clean up:** delete the branch after merging. The issue closes and moves to *Done* automatically.
+Everyone creates their own branch when they start an issue. Code is reviewed **before** it goes into `main`, never after.
 
-**New task?** Create an issue first, then a branch using the same naming format.
+1. **Pick an issue:** check its *Blocked by* list is done, then assign yourself on the issue.
+2. **Create your branch:** on the issue page, click **Create a branch** under *Development* in the sidebar. Use the branch name from the table above and leave the source as `main`. Choose **Checkout locally** and run the commands it shows.
+3. **Commit** your work on your branch, with clear messages, for example `Add countdown to GameState (#14)`.
+4. **Push** the branch to GitHub: `git push`.
+5. **Open a pull request** from your branch into `main`, with `Closes #<issue number>` in the description.
+6. **Request a reviewer** using the *Reviewers* box in the PR sidebar.
+7. **Review:** the reviewer reads the *Files changed* tab and, ideally, pulls the branch and runs the game. They then **Approve** or **Request changes**.
+8. **Fix if needed:** make the changes on the same branch and push again. The PR updates automatically, so don't open a new one.
+9. **Merge** into `main` once it's approved, then delete the branch. The issue closes and moves to *Done* automatically.
+
+**Keeping it quick:** keep PRs small and review within a day. Waiting PRs hold up the issues that depend on them.
+
+**Stay up to date:** if `main` changes while you're working, run `git pull origin main` on your branch to bring the changes in.
+
+**New task?** Create an issue first, then create its branch the same way.
