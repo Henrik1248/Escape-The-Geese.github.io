@@ -1,5 +1,7 @@
 package io.github.escapethegeese;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Item {
     // Constructor, attributes and methods to be filled in
 
@@ -7,9 +9,9 @@ public class Item {
     private String effectType;
     private double strength;
     private int duration;
-    private String spriteAddress;
-    public Item(){
-
+    private Texture image;
+    public Item(String address){
+        image = new Texture(address);
     }
     public String getName(){
         return name;
@@ -28,9 +30,9 @@ public class Item {
 
     }
     public void applyToPlayer(){
-        
+
     }
-    public String getSpriteAddress() {
-        return spriteAddress;
+    public Texture getImage() {
+        return image;
     }
 }
