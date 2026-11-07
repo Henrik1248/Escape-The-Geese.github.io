@@ -30,7 +30,6 @@ public class Main extends Game {
     @Override
     public void render(){
         gameLoop();
-        delta = Gdx.graphics.getDeltaTime();
         font.setColor(Color.BLACK);
     }
 
@@ -38,8 +37,11 @@ public class Main extends Game {
         ScreenUtils.clear(255, 255, 255, 1);
 
         // Main game logic in here
+        delta = Gdx.graphics.getDeltaTime();
 
-        //checkPlayerMovementInputs(player);  Uncomment when player object exists
+        player = game.getPlayer();
+
+        checkPlayerMovementInputs(player);
 
         // Draw the statistics
 
@@ -48,10 +50,13 @@ public class Main extends Game {
         font.draw(drawingBatch, "Items used: " + String.valueOf(game.getItemsUsed()), 0, 425);
         font.draw(drawingBatch, "Timer: " + String.valueOf(game.getTimeElapsed()), 0, 400); // Adjust y values once game UI is finalized
 
+        // Draw the player
+
+        drawingBatch.draw(player.getSprite().getTexture(), player.getSprite().getX(), player.getSprite().getY(), player.getSprite().getWidth(), player.getSprite().getHeight());
+
         // Display inventory
 
         int count = 0;
-        player = game.getPlayer();
         for (Item item : player.getInventory()){
             drawingBatch.draw(item.getImage(), 100 + (50 * count), 50);
             count++;
@@ -69,16 +74,17 @@ public class Main extends Game {
 
     private void checkPlayerMovementInputs(Player player){
         if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
-            player.moveUp();
+            System.out.println("Moving");
+            player.moveUp(delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            player.moveLeft();
+            player.moveLeft(delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            player.moveDown();
+            player.moveDown(delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            player.moveRight();
+            player.moveRight(delta);
         }
     }
 }

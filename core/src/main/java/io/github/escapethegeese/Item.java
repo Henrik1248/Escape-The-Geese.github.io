@@ -10,8 +10,8 @@ public class Item {
     private double strength;
     private int duration;
     private Texture image;
-    public Item(String address){
-        image = new Texture(address);
+    public Item(String path){
+        image = new Texture(path);
     }
     public String getName(){
         return name;

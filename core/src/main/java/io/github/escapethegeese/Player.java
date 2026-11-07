@@ -1,6 +1,7 @@
 package io.github.escapethegeese;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ public class Player {
     private Sprite sprite;
     private float speed;
     private int health;
-    private float delta;
     private float[] location;
     private float startX;
     private float startY;
@@ -20,23 +20,23 @@ public class Player {
     private int score;
 
     public Player(){
-        delta = Gdx.graphics.getDeltaTime();
-        speed = 4f;
+        speed = 130f;
         health = 100; // Values to be adjusted in prototyping
         location = new float[]{startX,startY};
         inventory = new ArrayList<>();
+        sprite = new Sprite(new Texture("Sprites/player.png"));
     }
     // Update players location in below methods
-    public void moveUp(){
+    public void moveUp(float delta){
         sprite.translateY(speed * delta);
     }
-    public void moveDown(){
+    public void moveDown(float delta){
         sprite.translateY(-speed * delta);
     }
-    public void moveLeft(){
+    public void moveLeft(float delta){
         sprite.translateX(-speed * delta);
     }
-    public void moveRight(){
+    public void moveRight(float delta){
         sprite.translateX(speed * delta);
     }
     public void takeDamage(int damage){
@@ -70,4 +70,5 @@ public class Player {
     public void increaseScore(int amount){
         score += amount;
     }
+    public Sprite getSprite(){return sprite;}
 }
