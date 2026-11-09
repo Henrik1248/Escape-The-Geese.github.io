@@ -20,7 +20,7 @@ public class Player {
     private int score;
 
     public Player(){
-        speed = 130f;
+        speed = 200f;
         health = 100; // Values to be adjusted in prototyping
         location = new float[]{startX,startY};
         inventory = new ArrayList<>();
