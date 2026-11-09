@@ -56,7 +56,7 @@ public class Main extends Game {
 
         font.draw(drawingBatch, "Events triggered: " + String.valueOf(game.getEventsTriggered()), 0, 450);
         font.draw(drawingBatch, "Items used: " + String.valueOf(game.getItemsUsed()), 0, 425);
-        font.draw(drawingBatch, "Timer: " + String.valueOf(game.getTimeElapsed()), 0, 400); // Adjust y values once game UI is finalized
+        font.draw(drawingBatch, "Timer: " + String.valueOf(getCountdownClock(game.getTimeElapsed())), 0, 400); // Adjust y values once game UI is finalized
 
         // Draw the player
 
@@ -98,6 +98,17 @@ public class Main extends Game {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             player.moveRight(delta);
+        }
+    }
+    private String getCountdownClock(int timeElapsed){
+        int timeRemaining = 300 - timeElapsed;
+        int minutes = timeRemaining / 60;
+        int seconds = timeRemaining % 60;
+        if (seconds < 10){
+            return String.valueOf(minutes) + ":0" + String.valueOf(seconds);
+        }
+        else {
+            return String.valueOf(minutes) + ":" + String.valueOf(seconds);
         }
     }
 }
