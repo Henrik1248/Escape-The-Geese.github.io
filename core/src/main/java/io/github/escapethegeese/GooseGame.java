@@ -14,6 +14,7 @@ public class GooseGame {
 
     private int waveNumber;
     final private int numberOfWaves = 5;
+    final private int gameLength = 300;
     private List<Item> mapItems;
     private List<Event> mapEvents;
 
@@ -97,5 +98,8 @@ public class GooseGame {
     }
     public boolean geeseRemaining(){
         return geese.size() > 0;
+    }
+    public int getGameLength(){
+        return gameLength;
     }
 }

@@ -79,7 +79,7 @@ public class Main extends Game {
 
         // Check for win / loss
 
-        if (game.getTimeElapsed() == 300){
+        if (game.getTimeElapsed() == game.getGameLength()){
             // Player ran out of time - Lose
         }
         if (player.isDead()){
@@ -151,7 +151,7 @@ public class Main extends Game {
         }
     }
     private String getCountdownClock(int timeElapsed){
-        int timeRemaining = 300 - timeElapsed;
+        int timeRemaining = game.getGameLength() - timeElapsed;
         int minutes = timeRemaining / 60;
         int seconds = timeRemaining % 60;
         if (seconds < 10){
