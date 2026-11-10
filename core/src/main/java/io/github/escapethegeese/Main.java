@@ -5,11 +5,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
@@ -22,11 +24,13 @@ public class Main extends Game {
     private Rectangle playerRectangle;
     private Rectangle itemRectangle;
     private Rectangle gooseRectangle;
+    private Rectangle obstacleRectangle;
     private float timer = 0f;
     private float delta;
     private Texture background;
     private List<Item> items;
     private List<Goose> geese;
+    private List<Sprite> obstacles;
 
     @Override
     public void create() {
@@ -34,7 +38,9 @@ public class Main extends Game {
         drawingBatch = new SpriteBatch();
         font = new BitmapFont();
         game = new GooseGame();
-
+        obstacles = new ArrayList<>();
+        obstacles.add(new Sprite(new Texture("Sprites/obstacle.png")));
+        obstacles.get(0).setPosition(500, 300);
         background = new  Texture("map.png");
     }
 
@@ -112,6 +118,12 @@ public class Main extends Game {
 
         drawingBatch.draw(player.getSprite().getTexture(), player.getSprite().getX(), player.getSprite().getY(), player.getSprite().getWidth(), player.getSprite().getHeight());
 
+        // Draw the obstacles
+
+        for (Sprite obstacle : obstacles){
+            drawingBatch.draw(obstacle.getTexture(), obstacle.getX(), obstacle.getY(), obstacle.getWidth(), obstacle.getHeight());
+        }
+
         // Draw the geese
 
         for (Goose goose : game.getGeese()){
@@ -137,6 +149,8 @@ public class Main extends Game {
     }
 
     private void checkPlayerMovementInputs(Player player){
+        float initialx = player.getSprite().getX();
+        float initialy  = player.getSprite().getY();
         if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)){
             player.moveUp(delta);
         }
@@ -149,6 +163,9 @@ public class Main extends Game {
         if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             player.moveRight(delta);
         }
+        if (!canPlayerMove(player)){
+            player.getSprite().setPosition(initialx, initialy);
+        }
     }
     private String getCountdownClock(int timeElapsed){
         int timeRemaining = 300 - timeElapsed;
@@ -160,5 +177,14 @@ public class Main extends Game {
         else {
             return "0" + String.valueOf(minutes) + ":" + String.valueOf(seconds);
         }
+    }
+    private boolean canPlayerMove(Player player){
+        playerRectangle = player.getSprite().getBoundingRectangle();
+        for (Sprite obstacle : obstacles){
+            if (playerRectangle.overlaps(obstacle.getBoundingRectangle())){
+                return false;
+            }
+        }
+        return true;
     }
 }
