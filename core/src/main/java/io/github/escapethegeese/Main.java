@@ -103,6 +103,7 @@ public class Main extends Game {
 
         // Draw the statistics
 
+        font.draw(drawingBatch, "Score: " + String.valueOf(player.getScore()), 0, 475);
         font.draw(drawingBatch, "Events triggered: " + String.valueOf(game.getEventsTriggered()), 0, 450);
         font.draw(drawingBatch, "Items used: " + String.valueOf(game.getItemsUsed()), 0, 425);
         font.draw(drawingBatch, "Timer: " + String.valueOf(getCountdownClock(game.getTimeElapsed())), 0, 400); // Adjust y values once game UI is finalized
@@ -154,10 +155,10 @@ public class Main extends Game {
         int minutes = timeRemaining / 60;
         int seconds = timeRemaining % 60;
         if (seconds < 10){
-            return String.valueOf(minutes) + ":0" + String.valueOf(seconds);
+            return "0" + String.valueOf(minutes) + ":0" + String.valueOf(seconds);
         }
         else {
-            return String.valueOf(minutes) + ":" + String.valueOf(seconds);
+            return "0" + String.valueOf(minutes) + ":" + String.valueOf(seconds);
         }
     }
 }
