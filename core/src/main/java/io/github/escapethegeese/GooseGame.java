@@ -82,4 +82,13 @@ public class GooseGame {
     public void incrementTimeElapsed(){
         timeElapsed++;
     }
+    public List<Item> getMapItems(){
+        return mapItems;
+    }
+    public void removeItemFromMap(int index){
+        mapItems.remove(index);
+    }
+    public boolean finalGeeseWaveDefeated(){
+        return false;
+    }
 }
