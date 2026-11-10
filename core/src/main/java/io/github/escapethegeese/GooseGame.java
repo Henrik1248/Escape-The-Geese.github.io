@@ -13,6 +13,7 @@ public class GooseGame {
     private int eventsTriggered;
 
     private int waveNumber;
+    final private int numberOfWaves = 5;
     private List<Item> mapItems;
     private List<Event> mapEvents;
 
@@ -89,6 +90,12 @@ public class GooseGame {
         mapItems.remove(index);
     }
     public boolean finalGeeseWaveDefeated(){
+        if (waveNumber == numberOfWaves && !geeseRemaining()){
+            return true;
+        }
         return false;
+    }
+    public boolean geeseRemaining(){
+        return geese.size() > 0;
     }
 }

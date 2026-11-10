@@ -91,6 +91,9 @@ public class Main extends Game {
 //        if (game.nicheEscapeEventHasOccured){
 //            // Player escaped somehow - Win
 //        }
+        if (!game.geeseRemaining()){
+            game.getNextWave();
+        }
 
         drawingBatch.begin();
 
